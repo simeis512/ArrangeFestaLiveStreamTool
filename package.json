@@ -1,0 +1,52 @@
+{
+  "name": "arrange-festa-live-stream-tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --trace-warnings ./src/js/server.js",
+    "build": "npx webpack"
+  },
+  "author": "simeis512",
+  "license": "MIT",
+  "dependencies": {
+    "@mdi/font": "^5.3.45",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "csv-parse": "^4.12.0",
+    "express": "^4.17.1",
+    "material-design-icons": "^3.0.1",
+    "material-design-icons-iconfont": "^5.0.1",
+    "pug": "^2.0.4",
+    "qrcode": "^1.4.4",
+    "vue": "^2.6.11",
+    "vuedraggable": "^2.24.0",
+    "vuetify": "^2.3.3",
+    "ws": "^7.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "css-loader": "^3.6.0",
+    "fibers": "^5.0.0",
+    "pug-plain-loader": "^1.0.0",
+    "sass": "^1.26.9",
+    "sass-loader": "^9.0.1",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.3",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.5.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-node-externals": "^1.7.2"
+  }
+}
