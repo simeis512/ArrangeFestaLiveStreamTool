@@ -42,8 +42,8 @@ div(
                         :src="`icons/${currentOriginalMember.twitter}`"
                       )
                     .text-ellipsis.ml-1 {{ `${currentOriginalMember.name} (@${currentOriginalMember.twitter})` }}
-                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
                   .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.ruby) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
                   .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.comment) }}
               v-slide-y-transition
                 v-overlay(
@@ -83,8 +83,8 @@ div(
                           :src="`icons/${currentOriginalMember.twitter}`"
                         )
                       .text-ellipsis.ml-1 {{ `${currentOriginalMember.name} (@${currentOriginalMember.twitter})` }}
-                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
                     .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.ruby) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
                     .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.comment) }}
                 v-slide-y-reverse-transition
                   v-overlay(
@@ -126,8 +126,8 @@ div(
                         :src="`icons/${currentArrangeMember.twitter}`"
                       )
                     .text-ellipsis.ml-1 {{ `${currentArrangeMember.name} (@${currentArrangeMember.twitter})` }}
-                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
                   .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.ruby) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
                   .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.comment) }}
               v-slide-y-transition
                 v-overlay(
@@ -167,8 +167,8 @@ div(
                           :src="`icons/${currentArrangeMember.twitter}`"
                         )
                       .text-ellipsis.ml-1 {{ `${currentArrangeMember.name} (@${currentArrangeMember.twitter})` }}
-                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
                     .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.ruby) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
                     .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.comment) }}
                 v-slide-y-reverse-transition
                   v-overlay(
