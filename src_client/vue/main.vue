@@ -9,11 +9,11 @@ div(
 )
   v-container
     v-row.mb-4.elevation-2(
-      style="background: white; position: sticky; top: 0; z-index: 2"
+      style="background: white; position: sticky; top: 0; z-index: 2;"
     )
       v-col(
         cols="6"
-        style="position: relative; height: 148px"
+        style="position: relative; height: 164px; padding-right: 6px;"
       )
         v-hover
           template(
@@ -21,7 +21,7 @@ div(
           )
             v-card.px-4.py-3(
               v-show="isShownOriginal"
-              width="calc(100% - 24px)"
+              width="calc(100% - 18px)"
               :disabled="isShownArrange || isCooldown"
               outlined
               style="position: absolute; cursor: pointer"
@@ -42,8 +42,9 @@ div(
                         :src="`icons/${currentOriginalMember.twitter}`"
                       )
                     .text-ellipsis.ml-1 {{ `${currentOriginalMember.name} (@${currentOriginalMember.twitter})` }}
-                  .text-center.text-ellipsis {{ currentOriginalMember.original.title }}
-                  .text-center.text-ellipsis {{ currentOriginalMember.original.comment }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.ruby) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.comment) }}
               v-slide-y-transition
                 v-overlay(
                   v-if="hover"
@@ -82,8 +83,9 @@ div(
                           :src="`icons/${currentOriginalMember.twitter}`"
                         )
                       .text-ellipsis.ml-1 {{ `${currentOriginalMember.name} (@${currentOriginalMember.twitter})` }}
-                    .text-center.text-ellipsis {{ currentOriginalMember.original.title }}
-                    .text-center.text-ellipsis {{ currentOriginalMember.original.comment }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.title) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.ruby) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentOriginalMember.original.comment) }}
                 v-slide-y-reverse-transition
                   v-overlay(
                     v-if="hover"
@@ -95,7 +97,7 @@ div(
                     ) mdi-arrow-up-bold-box-outline
       v-col(
         cols="6"
-        style="position: relative; height: 148px"
+        style="position: relative; height: 164px; padding-left: 6px;"
       )
         v-hover
           template(
@@ -104,7 +106,7 @@ div(
             v-card.px-4.py-3(
               v-show="isShownArrange"
               :disabled="isCooldown"
-              width="calc(100% - 24px)"
+              width="calc(100% - 18px)"
               outlined
               style="position: absolute; cursor: pointer"
               @click="singleClickAlertReservation"
@@ -124,8 +126,9 @@ div(
                         :src="`icons/${currentArrangeMember.twitter}`"
                       )
                     .text-ellipsis.ml-1 {{ `${currentArrangeMember.name} (@${currentArrangeMember.twitter})` }}
-                  .text-center.text-ellipsis {{ currentArrangeMember.arrange.title }}
-                  .text-center.text-ellipsis {{ currentArrangeMember.arrange.comment }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.ruby) }}
+                  .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.comment) }}
               v-slide-y-transition
                 v-overlay(
                   v-if="hover"
@@ -164,8 +167,9 @@ div(
                           :src="`icons/${currentArrangeMember.twitter}`"
                         )
                       .text-ellipsis.ml-1 {{ `${currentArrangeMember.name} (@${currentArrangeMember.twitter})` }}
-                    .text-center.text-ellipsis {{ currentArrangeMember.arrange.title }}
-                    .text-center.text-ellipsis {{ currentArrangeMember.arrange.comment }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.title) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.ruby) }}
+                    .text-center.text-ellipsis {{ toSpaceWhenEmpty(currentArrangeMember.arrange.comment) }}
                 v-slide-y-reverse-transition
                   v-overlay(
                     v-if="hover"
@@ -254,6 +258,12 @@ div(
                 dense
                 @change="sendData"
               )
+              v-text-field(
+                v-model="member.original.ruby"
+                label="読み方"
+                dense
+                @change="sendData"
+              )
               v-textarea(
                 v-model="member.original.comment"
                 label="コメント"
@@ -269,6 +279,12 @@ div(
               v-text-field(
                 v-model="member.arrange.title"
                 label="曲名"
+                dense
+                @change="sendData"
+              )
+              v-text-field(
+                v-model="member.arrange.ruby"
+                label="読み方"
                 dense
                 @change="sendData"
               )
@@ -301,6 +317,7 @@ div(
                   label="アレンジ者"
                   rows="1"
                   dense
+                  height="27"
                   @change="sendData"
                 )
                   template(
@@ -313,8 +330,8 @@ div(
                       v-img(
                         :src="`icons/${item.twitter}`"
                       )
-                    v-list-tile-content.ma-0.ml-1
-                      v-list-tile-title.text-ellipsis {{ item.text }}
+                    v-list-item-content.ma-0.ml-1
+                      v-list-item-title.text-ellipsis {{ item.text }}
                   template(
                     #selection="{ item }"
                   )
@@ -325,8 +342,8 @@ div(
                       v-img(
                         :src="`icons/${item.twitter}`"
                       )
-                    v-list-tile-content.ma-0.ml-1
-                      v-list-tile-title.text-ellipsis {{ item.text }}
+                    v-list-item-content.ma-0.ml-1
+                      v-list-item-title.text-ellipsis {{ item.text }}
             v-expand-transition
               v-row.mt-n4.mb-n3(
                 v-if="member.arrangeId !== null && data.members[idToIndex(member.arrangeId)]"
@@ -341,9 +358,16 @@ div(
                     dense
                     @change="sendData"
                   )
+                  v-text-field(
+                    v-model="data.members[idToIndex(member.arrangeId)].arrange.ruby"
+                    label="読み方"
+                    dense
+                    @change="sendData"
+                  )
                   v-textarea(
                     v-model="data.members[idToIndex(member.arrangeId)].arrange.comment"
                     label="コメント"
+                    rows="1"
                     dense
                     @change="sendData"
                   )
@@ -679,14 +703,15 @@ export default {
               const csvArray = csvSync(e.target.result)
               csvArray.shift()
               csvArray.forEach((record) => {
+                record.forEach((r)=>console.log(r))
                 const [twitter, name] = record[1].split('\n')
-                const toArrange = csvArray.find((r) => record[1] === r[4])
-                const fromArrange = csvArray.find((r) => record[4] === r[1])
+                const toArrange = csvArray.find((r) => record[1] === r[5])
+                const fromArrange = csvArray.find((r) => record[5] === r[1])
                 if (!toArrange) {
                   throw `「${record.join(', ').replace(/\r?\n/g, '↵')}」の行でエラー\nアレンジ者に「${record[1].replace(/\r?\n/g, '↵')}」が存在しません`
                 }
                 if (!fromArrange) {
-                  throw `「${record.join(', ').replace(/\r?\n/g, '↵')}」の行でエラー\n原曲者に「${record[4].replace(/\r?\n/g, '↵')}」が存在しません`
+                  throw `「${record.join(', ').replace(/\r?\n/g, '↵')}」の行でエラー\n原曲者に「${record[5].replace(/\r?\n/g, '↵')}」が存在しません`
                 }
                 members.push({
                   id: record[0],
@@ -694,11 +719,13 @@ export default {
                   twitter: twitter.split('@')[1],
                   original: {
                     title: record[2],
-                    comment: record[3]
+                    ruby: record[3],
+                    comment: record[4]
                   },
                   arrange: {
-                    title: toArrange[5],
-                    comment: toArrange[6]
+                    title: toArrange[6],
+                    ruby: toArrange[7],
+                    comment: toArrange[8]
                   },
                   arrangeId: fromArrange[0]
                 })
@@ -721,6 +748,9 @@ export default {
     },
     idToIndex(id) {
       return this.data.members.findIndex((member) => member.id === id)
+    },
+    toSpaceWhenEmpty(str) {
+      return !str ? '　' : str
     }
   }
 }
